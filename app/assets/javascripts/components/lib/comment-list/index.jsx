@@ -1,12 +1,38 @@
 var Comment = require('../comment');
 
 var CommentList = React.createClass({
-  render :  function() {
+  getInitialState: function() {
+    return {data: []};
+  },
+
+  componentDidMount: function() {
+    this.loadComments();
+  },
+
+  loadComments: function() {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+
+  render: function() {
+    var commentNodes = this.state.data.map( function(comment) {
+      return (
+        <Comment image={comment.image_url} content={comment.content} details={comment.details} />
+      );
+    })
+
     return (
       <div className='comment-list'>
-        {this.props.comments.map( function(comment){
-          return <Comment image={comment.image} content={comment.content} details={comment.details} />
-        })}
+        {commentNodes}
       </div>
     );
   }

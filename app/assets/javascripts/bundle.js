@@ -89,13 +89,37 @@ var MobiComments =
 
 	var CommentList = React.createClass({
 	  displayName: "CommentList",
+	  getInitialState: function () {
+	    return { data: [] };
+	  },
+
+	  componentDidMount: function () {
+	    this.loadComments();
+	  },
+
+	  loadComments: function () {
+	    $.ajax({
+	      url: this.props.url,
+	      dataType: "json",
+	      cache: false,
+	      success: (function (data) {
+	        this.setState({ data: data });
+	      }).bind(this),
+	      error: (function (xhr, status, err) {
+	        console.error(this.props.url, status, err.toString());
+	      }).bind(this)
+	    });
+	  },
+
 	  render: function () {
+	    var commentNodes = this.state.data.map(function (comment) {
+	      return React.createElement(Comment, { image: comment.image_url, content: comment.content, details: comment.details });
+	    });
+
 	    return React.createElement(
 	      "div",
 	      { className: "comment-list" },
-	      this.props.comments.map(function (comment) {
-	        return React.createElement(Comment, { image: comment.image, content: comment.content, details: comment.details });
-	      })
+	      commentNodes
 	    );
 	  }
 	});
@@ -113,10 +137,11 @@ var MobiComments =
 	var Comment = React.createClass({
 	  displayName: "Comment",
 	  render: function () {
+	    console.log(this);
 	    return React.createElement(
 	      "div",
 	      { className: "comment" },
-	      React.createElement(Image, { src: this.props.image.src, alt: this.props.image.alt }),
+	      React.createElement(Image, { src: this.props.image }),
 	      React.createElement(Content, { header: this.props.content.header, body: this.props.content.body, details: this.props.details })
 	    );
 	  }
@@ -136,7 +161,7 @@ var MobiComments =
 	    return React.createElement(
 	      "div",
 	      { className: "comment-image" },
-	      React.createElement("img", { src: this.props.src, alt: this.props.alt })
+	      React.createElement("img", { src: this.props.src })
 	    );
 	  }
 	});

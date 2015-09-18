@@ -3,17 +3,9 @@
   / =react_component('Comments.HelloWorld',{},{prerender: false})
   
   = react_component('MobiComments.CommentList',
-                    {comments: [{ content: { header: 'First React Comment', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, aspernatur, quia modi minima debitis tempora ducimus quam vero impedit alias earum nemo error tenetur sed..' },image: { src: 'https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png', alt: 'Logo image' }, details: 'Date or details about this post' }]},
+                    { url: comments_path( format: :json ) },
                     { prerender: false })
-
-  - @comments.each do |comment|
-    .comment
-      .comment-image
-        img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo image"
-      .comment-content
-        h1= comment.author
-        p= comment.content
-  
+        
   .comment-form
     h1#comment_form Post a comment
     = form_for @comment, url: { action: 'create' } do |f|
