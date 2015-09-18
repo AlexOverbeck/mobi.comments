@@ -1,4 +1,11 @@
 #comments
+
+  / =react_component('Comments.HelloWorld',{},{prerender: false})
+  
+  = react_component('CommentsApp.CommentsWrapper',
+                    {comments: [{ content: { header: 'First React Comment', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, aspernatur, quia modi minima debitis tempora ducimus quam vero impedit alias earum nemo error tenetur sed..' },image: { src: 'https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png', alt: 'Logo image' }, details: 'Date or details about this post' }]},
+                    { prerender: false })
+
   .comment
     .comment-image
       img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo image"

@@ -1,0 +1,15 @@
+{
+  "name": "mobi-comments",
+  "private": true,
+  "dependencies": {
+    "6to5-core": "^3.6.5",
+    "6to5-loader": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-webpack": "^1.5.0",
+    "webpack": "^1.12.1"
+  },
+  "license": "none",
+  "engines": {
+    "node": ">= 0.10"
+  }
+}

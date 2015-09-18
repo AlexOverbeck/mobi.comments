@@ -13,7 +13,10 @@ gem 'jquery-rails'
 gem 'bourbon'
 gem 'neat'
 gem 'bitters'
+gem 'react-rails'
 
+# Views
+gem 'simple_form'
 
 # Misc
 gem 'jbuilder', '~> 2.0'
