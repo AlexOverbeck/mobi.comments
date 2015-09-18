@@ -1,5 +1,4 @@
 module.exports = {
   HelloWorld: require('./hello-world'),
-  Comment: require('./comment'),
-  CommentsWrapper: require('./comments-wrapper')
+  CommentList: require('./comment-list')
 };

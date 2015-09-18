@@ -5,7 +5,7 @@ var config = {
   context: path.resolve(assets_path),
   entry: path.resolve(assets_path) + '/entry.js',
   output: {
-    library: 'CommentsApp',
+    library: 'MobiComments',
     filename: 'bundle.js',
     path: path.resolve(assets_path)
   },

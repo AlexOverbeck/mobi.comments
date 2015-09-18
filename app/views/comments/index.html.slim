@@ -2,34 +2,24 @@
 
   / =react_component('Comments.HelloWorld',{},{prerender: false})
   
-  = react_component('CommentsApp.CommentsWrapper',
+  = react_component('MobiComments.CommentList',
                     {comments: [{ content: { header: 'First React Comment', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, aspernatur, quia modi minima debitis tempora ducimus quam vero impedit alias earum nemo error tenetur sed..' },image: { src: 'https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png', alt: 'Logo image' }, details: 'Date or details about this post' }]},
                     { prerender: false })
 
-  .comment
-    .comment-image
-      img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo image"
-    .comment-content
-      h1 First Comment Title or Author
-      p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, aspernatur, quia modi minima debitis tempora ducimus quam vero impedit alias earum nemo error tenetur sed..
-      p.comment-detail Date or details about this post
-
-  .comment
-    .comment-image
-      img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2.png" alt="Logo image"
-    .comment-content
-      h1 Another One
-      p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, aspernatur, quia modi minima debitis tempora ducimus quam vero impedit alias earum nemo error tenetur sed.
-      p.comment-detail Date or details about this post
-
+  - @comments.each do |comment|
+    .comment
+      .comment-image
+        img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo image"
+      .comment-content
+        h1= comment.author
+        p= comment.content
+  
   .comment-form
     h1#comment_form Post a comment
-    fieldset
-      p
-        label Comment Author
-        input type='text'
-      p
-        label Comment content
-        textarea  
-      p
-        input type='submit'
+    = form_for @comment, url: { action: 'create' } do |f|
+      fieldset
+        = f.label :author, 'Author'
+        = f.text_field :author
+        = f.label :content, 'Content'
+        = f.text_area :content
+        = f.submit 'Create'

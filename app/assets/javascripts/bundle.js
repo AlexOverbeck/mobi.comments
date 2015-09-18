@@ -1,4 +1,4 @@
-var CommentsApp =
+var MobiComments =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -57,8 +57,7 @@ var CommentsApp =
 
 	module.exports = {
 	  HelloWorld: __webpack_require__(2),
-	  Comment: __webpack_require__(3),
-	  CommentsWrapper: __webpack_require__(6)
+	  CommentList: __webpack_require__(3)
 	};
 
 /***/ },
@@ -73,7 +72,7 @@ var CommentsApp =
 	    return React.createElement(
 	      "div",
 	      { "class": "hi-there" },
-	      "Hello, World!1!"
+	      "Hello, World!!!"
 	    );
 	  }
 	});
@@ -86,8 +85,31 @@ var CommentsApp =
 
 	"use strict";
 
-	var Image = __webpack_require__(4);
-	var Content = __webpack_require__(5);
+	var Comment = __webpack_require__(4);
+
+	var CommentList = React.createClass({
+	  displayName: "CommentList",
+	  render: function () {
+	    return React.createElement(
+	      "div",
+	      { className: "comment-list" },
+	      this.props.comments.map(function (comment) {
+	        return React.createElement(Comment, { image: comment.image, content: comment.content, details: comment.details });
+	      })
+	    );
+	  }
+	});
+
+	module.exports = CommentList;
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var Image = __webpack_require__(5);
+	var Content = __webpack_require__(6);
 	var Comment = React.createClass({
 	  displayName: "Comment",
 	  render: function () {
@@ -103,7 +125,7 @@ var CommentsApp =
 	module.exports = Comment;
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -122,7 +144,7 @@ var CommentsApp =
 	module.exports = Image;
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -153,27 +175,6 @@ var CommentsApp =
 	});
 
 	module.exports = Content;
-
-/***/ },
-/* 6 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	var CommentsWrapper = React.createClass({
-	  displayName: "CommentsWrapper",
-	  render: function () {
-	    return React.createElement(
-	      "div",
-	      { "class": "comments-wrapper" },
-	      this.props.comments.map(function (comment, i) {
-	        return React.createElement(CommentsApp.Comment, { image: comment.image, content: comment.content, details: comment.details });
-	      })
-	    );
-	  }
-	});
-
-	module.exports = CommentsWrapper;
 
 /***/ }
 /******/ ]);
