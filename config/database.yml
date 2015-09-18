@@ -10,9 +10,3 @@ development:
 test:
   <<: *default
   database: mobi_comments_test
-
-production:
-  <<: *default
-  database: mobi_comments_production
-  username: root
-  password:
