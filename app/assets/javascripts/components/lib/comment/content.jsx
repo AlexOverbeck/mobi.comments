@@ -1,5 +1,5 @@
 var Content = React.createClass({
-  render :  function() {
+  render: function() {
     return (
       <div className='comment-content'>
         <h1>{this.props.header}</h1>

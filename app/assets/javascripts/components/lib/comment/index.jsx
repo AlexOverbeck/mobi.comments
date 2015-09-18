@@ -1,8 +1,7 @@
 var Image = require('./image');
 var Content = require('./content');
 var Comment = React.createClass({
-  render :  function() {
-    console.log(this)
+  render: function() {
     return (
       <div className='comment'>
         <Image src={this.props.image} />
