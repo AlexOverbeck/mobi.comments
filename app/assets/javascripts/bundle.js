@@ -57,8 +57,7 @@ var MobiComments =
 
 	module.exports = {
 	  HelloWorld: __webpack_require__(2),
-	  CommentList: __webpack_require__(3),
-	  CommentForm: __webpack_require__(7)
+	  Comments: __webpack_require__(3)
 	};
 
 /***/ },
@@ -86,10 +85,82 @@ var MobiComments =
 
 	"use strict";
 
-	var Comment = __webpack_require__(4);
+	var Form = __webpack_require__(4);
+	var List = __webpack_require__(5);
 
-	var CommentList = React.createClass({
-	  displayName: "CommentList",
+	var Comments = React.createClass({
+	  displayName: "Comments",
+	  render: function () {
+	    return React.createElement(
+	      "div",
+	      { classID: "comments" },
+	      React.createElement(Form, null),
+	      React.createElement(List, { url: "/comments.json" })
+	    );
+	  }
+	});
+
+	module.exports = Comments;
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var Form = React.createClass({
+	  displayName: "Form",
+	  handleSubmit: function (e) {
+	    e.preventDefault();
+
+	    var author = React.findDOMNode(this.refs.author).value.trim();
+	    var content = React.findDOMNode(this.refs.content).value.trim();
+
+	    console.log(this);
+	    this.props.onCommentSubmit({ author: author, content: content });
+
+	    React.findDOMNode(this.refs.author).value = "";
+	    React.findDOMNode(this.refs.content).value = "";
+
+	    return;
+	  },
+
+	  render: function () {
+	    return React.createElement(
+	      "div",
+	      { className: "comment-form-wrapper" },
+	      React.createElement(
+	        "h1",
+	        null,
+	        "Post a comment"
+	      ),
+	      React.createElement(
+	        "form",
+	        { className: "comment-form", onSubmit: this.handleSubmit },
+	        React.createElement(
+	          "fieldset",
+	          null,
+	          React.createElement("input", { className: "comment-author", type: "text", placeholder: "Your name", ref: "author" }),
+	          React.createElement("textarea", { className: "comment-text", placeholder: "Say something...", ref: "content" }),
+	          React.createElement("input", { className: "comment-submit", type: "submit", value: "Post" })
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Form;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var Comment = __webpack_require__(6);
+
+	var List = React.createClass({
+	  displayName: "List",
 	  getInitialState: function () {
 	    return { data: [] };
 	  },
@@ -125,16 +196,16 @@ var MobiComments =
 	  }
 	});
 
-	module.exports = CommentList;
+	module.exports = List;
 
 /***/ },
-/* 4 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var Image = __webpack_require__(5);
-	var Content = __webpack_require__(6);
+	var Image = __webpack_require__(7);
+	var Content = __webpack_require__(8);
 	var Comment = React.createClass({
 	  displayName: "Comment",
 	  render: function () {
@@ -150,7 +221,7 @@ var MobiComments =
 	module.exports = Comment;
 
 /***/ },
-/* 5 */
+/* 7 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -169,7 +240,7 @@ var MobiComments =
 	module.exports = Image;
 
 /***/ },
-/* 6 */
+/* 8 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -200,54 +271,6 @@ var MobiComments =
 	});
 
 	module.exports = Content;
-
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	var CommentForm = React.createClass({
-	  displayName: "CommentForm",
-	  handleSubmit: function (e) {
-	    e.preventDefault();
-
-	    var author = React.findDOMNode(this.refs.author).value.trim();
-	    var text = React.findDOMNode(this.refs.text).value.trim();
-
-	    this.props.onCommentSubmit({ author: author, text: text });
-
-	    React.findDOMNode(this.refs.author).value = "";
-	    React.findDOMNode(this.refs.text).value = "";
-
-	    return;
-	  },
-
-	  render: function () {
-	    return React.createElement(
-	      "div",
-	      { "class": "comment-form-wrapper" },
-	      React.createElement(
-	        "h1",
-	        null,
-	        "Post a comment"
-	      ),
-	      React.createElement(
-	        "form",
-	        { className: "comment-form", onSubmit: this.handleSubmit },
-	        React.createElement(
-	          "fieldset",
-	          null,
-	          React.createElement("input", { className: "comment-author", type: "text", placeholder: "Your name", ref: "author" }),
-	          React.createElement("input", { className: "comment-text", type: "text", placeholder: "Say something...", ref: "text" }),
-	          React.createElement("input", { className: "comment-submit", type: "submit", value: "Post" })
-	        )
-	      )
-	    );
-	  }
-	});
-
-	module.exports = CommentForm;
 
 /***/ }
 /******/ ]);

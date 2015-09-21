@@ -2,11 +2,7 @@
 
   / =react_component('Comments.HelloWorld',{},{prerender: false})
   
-  = react_component('MobiComments.CommentForm')
-  
-  = react_component('MobiComments.CommentList',
-                    { url: comments_path( format: :json ) },
-                    { prerender: false })
+  = react_component('MobiComments.Comments')
         
   / .comment-form
   /   h1 Post a comment

@@ -1,6 +1,6 @@
 var Comment = require('../comment');
 
-var CommentList = React.createClass({
+var List = React.createClass({
   getInitialState: function() {
     return {data: []};
   },
@@ -38,4 +38,4 @@ var CommentList = React.createClass({
   }
 });
 
-module.exports = CommentList;
+module.exports = List;
