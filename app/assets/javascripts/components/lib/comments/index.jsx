@@ -4,9 +4,9 @@ var List = require('./list');
 var Comments = React.createClass({
   render: function() {
     return (
-      <div classID="comments">
+      <div id="comments">
         <Form />
-        <List url="/comments.json" />
+        <List url={this.props.url} />
       </div>
     )
   }

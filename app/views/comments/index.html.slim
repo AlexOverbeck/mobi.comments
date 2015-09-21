@@ -1,9 +1,9 @@
-#comments
+/ =react_component('MobiComments.HelloWorld',{},{prerender: false})
 
-  / =react_component('Comments.HelloWorld',{},{prerender: false})
-  
-  = react_component('MobiComments.Comments')
-        
+= react_component('MobiComments.Comments', 
+                  { url: comments_path( format: :json ) })
+
+/ #comments
   / .comment-form
   /   h1 Post a comment
   /   = form_for @comment, url: { action: 'create' } do |f|
@@ -13,3 +13,11 @@
   /       = f.label :content, 'Content'
   /       = f.text_area :content
   /       = f.submit 'Create'
+/   - @comments.each do |comment|
+/    .comment
+/      .comment-image= image_tag comment.image_url
+/      .comment-content
+/        h1= comment.author
+/        p= comment.content
+  
+  

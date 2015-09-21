@@ -93,9 +93,9 @@ var MobiComments =
 	  render: function () {
 	    return React.createElement(
 	      "div",
-	      { classID: "comments" },
+	      { id: "comments" },
 	      React.createElement(Form, null),
-	      React.createElement(List, { url: "/comments.json" })
+	      React.createElement(List, { url: this.props.url })
 	    );
 	  }
 	});
