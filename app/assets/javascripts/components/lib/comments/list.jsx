@@ -4,7 +4,7 @@ var List = React.createClass({
   render: function() {
     var commentNodes = this.props.data.map( function(comment) {
       return (
-        <Comment image={comment.image_url} content={comment.content} details={comment.details} />
+        <Comment image={comment.image_url} header={comment.author} content={comment.content} details={comment.details} />
       );
     })
 

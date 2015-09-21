@@ -98,13 +98,40 @@ var MobiComments =
 	    this.loadComments();
 	  },
 
+	  handleCommentSubmit: function (comment) {
+	    var commentFormat = {
+	      content: {
+	        header: comment.author,
+	        body: comment.content
+	      }
+	    };
+	    var comments = this.state.data;
+	    var newComments = $.merge([commentFormat], comments);
+	    this.setState({ data: newComments });
+	    //
+	    // $.ajax({
+	    //   url: this.props.url,
+	    //   dataType: 'json',
+	    //   type: 'POST',
+	    //   data: { comment: { author: comment.author, content: comment.content } },
+	    //   success: function(data) {
+	    //     if(data.success) {
+	    //       this.setState({data: newComments});
+	    //     }
+	    //   }.bind(this),
+	    //   error: function(xhr, status, err) {
+	    //     console.error(this.props.url, status, err.toString());
+	    //   }.bind(this)
+	    // });
+	  },
+
 	  loadComments: function () {
 	    $.ajax({
 	      url: this.props.url,
 	      dataType: "json",
 	      cache: false,
 	      success: (function (data) {
-	        this.setState({ data: data });
+	        this.setState({ data: data.comments });
 	      }).bind(this),
 	      error: (function (xhr, status, err) {
 	        console.error(this.props.url, status, err.toString());
@@ -113,10 +140,11 @@ var MobiComments =
 	  },
 
 	  render: function () {
+	    console.log(this);
 	    return React.createElement(
 	      "div",
 	      { id: "comments" },
-	      React.createElement(Form, null),
+	      React.createElement(Form, { onCommentSubmit: this.handleCommentSubmit }),
 	      React.createElement(List, { data: this.state.data })
 	    );
 	  }
@@ -138,7 +166,10 @@ var MobiComments =
 	    var author = React.findDOMNode(this.refs.author).value.trim();
 	    var content = React.findDOMNode(this.refs.content).value.trim();
 
-	    // this.props.onCommentSubmit({author: author, content: content});
+	    this.props.onCommentSubmit({
+	      author: author,
+	      content: content
+	    });
 
 	    React.findDOMNode(this.refs.author).value = "";
 	    React.findDOMNode(this.refs.content).value = "";
@@ -184,7 +215,7 @@ var MobiComments =
 	  displayName: "List",
 	  render: function () {
 	    var commentNodes = this.props.data.map(function (comment) {
-	      return React.createElement(Comment, { image: comment.image_url, content: comment.content, details: comment.details });
+	      return React.createElement(Comment, { image: comment.image_url, header: comment.author, content: comment.content, details: comment.details });
 	    });
 
 	    return React.createElement(
@@ -212,7 +243,7 @@ var MobiComments =
 	      "div",
 	      { className: "comment" },
 	      React.createElement(Image, { src: this.props.image }),
-	      React.createElement(Content, { header: this.props.content.header, body: this.props.content.body, details: this.props.details })
+	      React.createElement(Content, { header: this.props.header, body: this.props.content.body, details: this.props.details })
 	    );
 	  }
 	});

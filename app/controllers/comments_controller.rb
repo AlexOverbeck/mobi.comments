@@ -2,8 +2,12 @@ class CommentsController < ApplicationController
   before_filter :find_comment, only: :update
 
   def index
-    @comments = Comment.all
+    @comments = Comment.all.order('updated_at DESC')
     @comment = Comment.new
+    respond_to do |format|
+      format.html
+      format.json { render json: @comments }
+    end
   end
 
   def create

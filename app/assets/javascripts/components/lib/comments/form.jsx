@@ -5,7 +5,10 @@ var Form = React.createClass({
     var author = React.findDOMNode(this.refs.author).value.trim();
     var content = React.findDOMNode(this.refs.content).value.trim();
 
-    // this.props.onCommentSubmit({author: author, content: content});
+    this.props.onCommentSubmit({
+      author: author,
+      content: content
+    });
 
     React.findDOMNode(this.refs.author).value = '';
     React.findDOMNode(this.refs.content).value = '';

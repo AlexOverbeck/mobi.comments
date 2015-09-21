@@ -5,7 +5,7 @@ var Comment = React.createClass({
     return (
       <div className='comment'>
         <Image src={this.props.image} />
-        <Content header={this.props.content.header} body={this.props.content.body} details={this.props.details} />
+        <Content header={this.props.header} body={this.props.content.body} details={this.props.details} />
       </div>
     )
   }
