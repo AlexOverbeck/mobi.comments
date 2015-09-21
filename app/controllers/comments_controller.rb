@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.save
       respond_to do |format|
-        format.html { redirect_to comments_path, flash: 'Success' }
+        format.html { render :index }
         format.json { render json: { success: @comment } }
       end
     end
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
   def update
     if @comment.update_attributes(comment_params)
       respond_to do |format|
-        format.html { redirect_to comments_path, flash: 'Update Success' }
+        format.html { render :index }
         format.json { render json: { success: @comment } }
       end
     end

@@ -57,7 +57,8 @@ var MobiComments =
 
 	module.exports = {
 	  HelloWorld: __webpack_require__(2),
-	  CommentList: __webpack_require__(3)
+	  CommentList: __webpack_require__(3),
+	  CommentForm: __webpack_require__(7)
 	};
 
 /***/ },
@@ -199,6 +200,54 @@ var MobiComments =
 	});
 
 	module.exports = Content;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var CommentForm = React.createClass({
+	  displayName: "CommentForm",
+	  handleSubmit: function (e) {
+	    e.preventDefault();
+
+	    var author = React.findDOMNode(this.refs.author).value.trim();
+	    var text = React.findDOMNode(this.refs.text).value.trim();
+
+	    this.props.onCommentSubmit({ author: author, text: text });
+
+	    React.findDOMNode(this.refs.author).value = "";
+	    React.findDOMNode(this.refs.text).value = "";
+
+	    return;
+	  },
+
+	  render: function () {
+	    return React.createElement(
+	      "div",
+	      { "class": "comment-form-wrapper" },
+	      React.createElement(
+	        "h1",
+	        null,
+	        "Post a comment"
+	      ),
+	      React.createElement(
+	        "form",
+	        { className: "comment-form", onSubmit: this.handleSubmit },
+	        React.createElement(
+	          "fieldset",
+	          null,
+	          React.createElement("input", { className: "comment-author", type: "text", placeholder: "Your name", ref: "author" }),
+	          React.createElement("input", { className: "comment-text", type: "text", placeholder: "Say something...", ref: "text" }),
+	          React.createElement("input", { className: "comment-submit", type: "submit", value: "Post" })
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = CommentForm;
 
 /***/ }
 /******/ ]);
