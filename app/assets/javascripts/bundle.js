@@ -128,7 +128,7 @@ var MobiComments =
 	  render: function () {
 	    return React.createElement(
 	      "div",
-	      { className: "comment-form-wrapper" },
+	      { className: "comment-form" },
 	      React.createElement(
 	        "h1",
 	        null,
@@ -136,7 +136,7 @@ var MobiComments =
 	      ),
 	      React.createElement(
 	        "form",
-	        { className: "comment-form", onSubmit: this.handleSubmit },
+	        { id: "new_comment", onSubmit: this.handleSubmit },
 	        React.createElement(
 	          "fieldset",
 	          null,

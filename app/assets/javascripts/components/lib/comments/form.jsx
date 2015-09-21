@@ -16,9 +16,9 @@ var Form = React.createClass({
 
   render: function() {
     return(
-      <div className="comment-form-wrapper">
+      <div className="comment-form">
         <h1>Post a comment</h1>
-        <form className="comment-form" onSubmit={this.handleSubmit}>
+        <form id="new_comment" onSubmit={this.handleSubmit}>
           <fieldset>
             <input className="comment-author" type="text" placeholder="Your name" ref="author" />
             <textarea className="comment-text" placeholder="Say something..." ref="content" />

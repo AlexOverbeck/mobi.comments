@@ -4,6 +4,7 @@
 @import 'base/base'
 @import 'settings'
 @import 'partials/comment'
+@import 'partials/comment_form'
 
 header
   background-color: $dark-gray
@@ -17,10 +18,40 @@ header
     margin: 0
 
 #comments
-  margin-left: 5%
-  width: 95%
-  +media(600px)
-    margin: 0 auto
-    width: 80%
-  +media(800px)
-    width: 60%
+  margin: 0 auto
+  padding: 2% 0 2% 4%
+  width: 100%
+  @extend %clearfix
+  
+.comment-form
+  width: 100%
+  margin-bottom: 2em
+  padding-right: 0.5em
+
+.comment-list
+  width: 100%
+
++media($small)
+  #comments
+    padding: 2% 0 2% 10%
+
++media($medium)
+  #comments
+    padding: 2% 0 2% 2%
+
+  .comment-form
+    float: left
+    width: 42%
+
+  .comment-list
+    float: right
+    width: 55%
+
++media($large)
+  .comment-form
+    float: left
+    width: 35%
+
+  .comment-list
+    float: right
+    width: 63%
