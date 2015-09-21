@@ -243,7 +243,7 @@ var MobiComments =
 	      "div",
 	      { className: "comment" },
 	      React.createElement(Image, { src: this.props.image }),
-	      React.createElement(Content, { header: this.props.header, body: this.props.content.body, details: this.props.details })
+	      React.createElement(Content, { header: this.props.header, body: this.props.content, details: this.props.details })
 	    );
 	  }
 	});
