@@ -436,7 +436,10 @@ var MobiComments =
 	  displayName: "List",
 	  render: function () {
 	    var commentNodes = this.props.data.map(function (comment) {
-	      return React.createElement(Comment, { image: comment.image_url, header: comment.author, content: comment.content, details: comment.details });
+	      return React.createElement(Comment, { image: comment.image_url,
+	        header: comment.author,
+	        content: comment.content,
+	        details: comment.details });
 	    });
 
 	    return React.createElement(
