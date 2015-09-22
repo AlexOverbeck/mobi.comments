@@ -7,13 +7,11 @@ var Form = React.createClass({
     var email = React.findDOMNode(this.refs.email).value.trim();
 
     var gravatarUrl = "http://www.gravatar.com/avatar/"+this.md5Email(email)+"?s=200&d=identicon";
-    var imageCheck = gravatarUrl.width
 
     this.props.onCommentSubmit({
       author: author,
       content: content,
       image_url: gravatarUrl,
-      details: 'just now'
     });
 
     React.findDOMNode(this.refs.author).value = '';
