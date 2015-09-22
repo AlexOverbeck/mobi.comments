@@ -8,6 +8,7 @@ var Comments = React.createClass({
 
   componentDidMount: function() {
     this.loadComments();
+    setInterval(this.loadComments, 2000);
   },
 
   handleCommentSubmit: function(comment) {
