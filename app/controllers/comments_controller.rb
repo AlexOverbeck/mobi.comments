@@ -14,8 +14,8 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.save
       respond_to do |format|
-        format.html { render :index }
-        format.json { render json: { success: @comment } }
+        format.html { redirect_to comments_path }
+        format.json { render json: Comment.all.order('updated_at DESC'), each_serializer: CommentSerializer }
       end
     end
   end

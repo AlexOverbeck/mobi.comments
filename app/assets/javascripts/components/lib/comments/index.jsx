@@ -12,29 +12,28 @@ var Comments = React.createClass({
 
   handleCommentSubmit: function(comment) {
     var commentFormat = {
-      content: {
-        header: comment.author,
-        body: comment.content
-      }
+      author: comment.author,
+      content: comment.content
     }
     var comments = this.state.data;
     var newComments = $.merge([commentFormat], comments);
+
     this.setState({data: newComments});
-    //
-    // $.ajax({
-    //   url: this.props.url,
-    //   dataType: 'json',
-    //   type: 'POST',
-    //   data: { comment: { author: comment.author, content: comment.content } },
-    //   success: function(data) {
-    //     if(data.success) {
-    //       this.setState({data: newComments});
-    //     }
-    //   }.bind(this),
-    //   error: function(xhr, status, err) {
-    //     console.error(this.props.url, status, err.toString());
-    //   }.bind(this)
-    // });
+
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      type: 'POST',
+      data: { comment: { author: comment.author, content: comment.content } },
+      success: function(data) {
+        if(data.success) {
+          this.setState({data: data});
+        }
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
   },
 
   loadComments: function() {
@@ -52,7 +51,6 @@ var Comments = React.createClass({
   },
 
   render: function() {
-    console.log(this)
     return (
       <div id="comments">
         <Form onCommentSubmit={this.handleCommentSubmit} />
