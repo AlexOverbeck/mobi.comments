@@ -14,7 +14,8 @@ namespace :db do
     5.times do
       comment_params = {
         content: Faker::Lorem.paragraph(rand(3..10)),
-        image_url: "http://lorempixel.com/200/200/?#{rand(1..9000)}"
+        image_url: "http://lorempixel.com/200/200/?#{rand(1..9000)}",
+        updated_at: rand(1..1000).minutes.ago
       }
       Comment.where(author: Faker::Name.name).first_or_create comment_params
     end
