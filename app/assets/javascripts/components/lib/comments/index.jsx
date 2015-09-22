@@ -13,7 +13,8 @@ var Comments = React.createClass({
   handleCommentSubmit: function(comment) {
     var commentFormat = {
       author: comment.author,
-      content: comment.content
+      content: comment.content,
+      image_url: comment.image_url
     }
     var comments = this.state.data;
     var newComments = $.merge([commentFormat], comments);
@@ -24,7 +25,7 @@ var Comments = React.createClass({
       url: this.props.url,
       dataType: 'json',
       type: 'POST',
-      data: { comment: { author: comment.author, content: comment.content } },
+      data: { comment: commentFormat },
       success: function(data) {
         if(data.success) {
           this.setState({data: data});
