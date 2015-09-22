@@ -3,6 +3,6 @@ class CommentSerializer < ActiveModel::Serializer
   attributes :id, :author, :content, :image_url, :details
 
   def details
-    time_ago_in_words(object.updated_at)
+    "#{time_ago_in_words(object.updated_at)} ago"
   end
 end

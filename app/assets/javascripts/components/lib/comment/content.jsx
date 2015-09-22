@@ -1,4 +1,10 @@
 var Content = React.createClass({
+  getDefaultProps: function() {
+    return {
+      details: 'just now'
+    };
+  },
+
   render: function() {
     return (
       <div className='comment-content'>
