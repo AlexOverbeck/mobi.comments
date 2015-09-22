@@ -166,7 +166,7 @@ var MobiComments =
 	    var content = React.findDOMNode(this.refs.content).value.trim();
 	    var email = React.findDOMNode(this.refs.email).value.trim();
 
-	    var gravatarUrl = "http://www.gravatar.com/avatar/" + this.md5Email(email);
+	    var gravatarUrl = "http://www.gravatar.com/avatar/" + this.md5Email(email) + "?s=200&d=identicon";
 	    var imageCheck = gravatarUrl.width;
 
 	    this.props.onCommentSubmit({
@@ -482,22 +482,6 @@ var MobiComments =
 
 	var Image = React.createClass({
 	  displayName: "Image",
-	  componentDidMount: function () {
-	    this.handleImageError();
-	  },
-
-	  handleImageError: function () {
-	    var $image = $(this.getDOMNode()).find("img");
-	    var placeholder = "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png";
-	    if ($image.attr("src")) {
-	      $image.error(function () {
-	        $image.attr("src", placeholder).addClass("placeholder");
-	      });
-	    } else {
-	      $image.attr("src", placeholder).addClass("placeholder");
-	    }
-	  },
-
 	  render: function () {
 	    return React.createElement(
 	      "div",
