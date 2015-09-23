@@ -1,9 +1,7 @@
 class CommentsController < ApplicationController
-  before_filter :find_comment, only: :update
+  before_filter :get_comments
 
   def index
-    @comments = Comment.all.order('updated_at DESC')
-    @comment = Comment.new
     respond_to do |format|
       format.html
       format.json { render json: @comments }
@@ -15,23 +13,14 @@ class CommentsController < ApplicationController
     if @comment.save
       respond_to do |format|
         format.html { redirect_to comments_path }
-        format.json { render json: Comment.all.order('updated_at DESC'), each_serializer: CommentSerializer }
-      end
-    end
-  end
-
-  def update
-    if @comment.update_attributes(comment_params)
-      respond_to do |format|
-        format.html { render :index }
-        format.json { render json: { success: @comment } }
+        format.json { render json: @comments, each_serializer: CommentSerializer }
       end
     end
   end
 
   private
-  def find_comment
-    @comment = Comment.find params[:id]
+  def get_comments
+    @comments = Comment.all.order('updated_at DESC')
   end
 
   def comment_params
