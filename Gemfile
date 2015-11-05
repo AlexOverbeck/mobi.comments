@@ -13,7 +13,6 @@ gem 'jquery-rails'
 gem 'bourbon'
 gem 'neat'
 gem 'bitters'
-gem 'react-rails'
 
 # Misc
 gem 'active_model_serializers'
