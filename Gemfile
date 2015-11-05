@@ -14,16 +14,25 @@ gem 'bourbon'
 gem 'neat'
 gem 'bitters'
 
+# React
+gem 'react_on_rails'
+gem 'therubyracer'
+
 # Misc
 gem 'active_model_serializers'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'faker'
 
-
 group :development, :test do
+  # Processes
+  gem 'foreman'
+
+  # Debugging
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry'
+
+  # Misc
   gem 'quiet_assets'
 end
 
