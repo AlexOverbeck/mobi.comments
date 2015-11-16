@@ -1,25 +1,25 @@
 / =react_component('MobiComments.HelloWorld',{},{prerender: false})
 
-= react_component('MobiComments.Comments', 
-                  { url: comments_path( format: :json ) },
-                  { preload: true })
+/ = react_component('MobiComments.Comments', 
+/                   { url: comments_path( format: :json ) },
+/                   { preload: true })
 
-/ #comments
-/   .comment-form
-/     h1 Post a comment
-/     = form_for @comment, url: { action: 'create' } do |f|
-/       fieldset
-/         = f.label :author, 'Author'
-/         = f.text_field :author
-/         = f.label :content, 'Content'
-/         = f.text_area :content
-/         = f.submit 'Create'
-/   .comment-list
-/     - @comments.each do |comment|
-/      .comment
-/        .comment-image= image_tag comment.image_url, alt: nil
-/        .comment-content
-/          h1= comment.author
-/          p= comment.content
+#comments
+  .comment-form
+    h1 Post a comment
+    / = form_for '/comments', url: { action: 'create' } do |f|
+    /   fieldset
+    /     = f.label :author, 'Author'
+    /     = f.text_field :author
+    /     = f.label :content, 'Content'
+    /     = f.text_area :content
+    /     = f.submit 'Create'
+  .comment-list
+    - @comments.each do |comment|
+     .comment
+       .comment-image= image_tag comment.image_url, alt: nil
+       .comment-content
+         h1= comment.author
+         p= comment.content
   
   

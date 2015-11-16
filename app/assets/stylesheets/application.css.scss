@@ -1,0 +1,63 @@
+@import 'reset';
+@import 'bourbon';
+@import 'neat';
+@import 'base/base';
+@import 'settings';
+@import 'partials/comment';
+@import 'partials/comment_form';
+
+header {
+  background-color: $dark-gray;
+  border-bottom: 1px solid darken($dark-gray, 10);
+  color: transparentize(white, 0.3);
+  padding: 0.5em;
+  margin-bottom: 2em;
+  -webkit-font-smoothing: antialiased;
+  h1 {
+    line-height: 40px;
+    margin: 0;
+  }
+}
+#comments {
+  margin: 0 auto;
+  padding: 2% 0 2% 4%;
+  width: 100%;
+  @extend %clearfix;
+}
+.comment-form {
+  width: 100%;
+  margin-bottom: 2em;
+  padding-right: 0.5em;
+}
+.comment-list {
+  width: 100%;
+}
+@include media($small) {
+  #comments {
+    padding: 2% 0 2% 10;
+  }
+}
+@include media($medium) {
+  #comments {
+    padding: 2% 0 2% 2%;
+  }
+
+  .comment-form {
+    float: left;
+    width: 42%;
+  }
+  .comment-list {
+    float: right;
+    width: 55%;
+  }
+}
+@include media($large) {
+  .comment-form {
+    float: left;
+    width: 35%;
+  }
+  .comment-list {
+    float: right;
+    width: 63%;
+  }
+}
