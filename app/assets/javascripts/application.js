@@ -8,8 +8,6 @@
 //= require generated/vendor-bundle
 //= require generated/app-bundle
 
-// bootstrap-sprockets depends on generated/vendor-bundle for jQuery.
-//= require bootstrap-sprockets
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -22,4 +20,3 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-
