@@ -4,6 +4,8 @@
 /                   { url: comments_path( format: :json ) },
 /                   { preload: true })
 
+= react_component("HelloWorldApp", { name: 'Alex' }, generator_function: false, prerender: true, trace: true)
+
 #comments
   .comment-form
     h1 Post a comment
