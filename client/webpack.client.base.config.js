@@ -18,9 +18,10 @@ module.exports = {
       'react-dom',
     ],
 
-    // This will contain the app entry points defined by webpack.hot.config and webpack.rails.config
+    // This will contain the app entry points defined by webpack.rails.config
     app: [
       './app/bundles/HelloWorld/startup/clientGlobals',
+      './app/bundles/Comments/startup/clientGlobals'
     ],
   },
   resolve: {

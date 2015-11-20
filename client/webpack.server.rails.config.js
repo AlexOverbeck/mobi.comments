@@ -7,7 +7,10 @@ module.exports = {
 
   // the project dir
   context: __dirname,
-  entry: ['./app/bundles/HelloWorld/startup/serverGlobals'],
+  entry: [
+    './app/bundles/HelloWorld/startup/serverGlobals',
+    './app/bundles/Comments/startup/serverGlobals'
+  ],
   output: {
     filename: 'server-bundle.js',
     path: '../app/assets/javascripts/generated',
