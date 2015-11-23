@@ -15,11 +15,11 @@ module.exports = {
     vendor: [
       'babel-core/polyfill',
       'es5-shim/es5-shim',
-      'es5-shim/es5-sham'
+      'es5-shim/es5-sham',
       'jquery',
       'jquery-ujs',
       'react',
-      'react-dom',
+      'react-dom'
     ],
 
     app: ['./app/startup/clientGlobals'],
@@ -50,13 +50,13 @@ module.exports = {
   module: {
     loaders: [
       {test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/},
-      {test: require.resolve('react'), loader: 'imports?shim=es5-shim/es5-shim&sham=es5-shim/es5-sham'}
+      {test: require.resolve('react'), loader: 'imports?shim=es5-shim/es5-shim&sham=es5-shim/es5-sham'},
 
       // React is necessary for the client rendering:
       {test: require.resolve('react'), loader: 'expose?React'},
       {test: require.resolve('react-dom'), loader: 'expose?ReactDOM'},
       {test: require.resolve('jquery'), loader: 'expose?jQuery'},
-      {test: require.resolve('jquery'), loader: 'expose?$'},
+      {test: require.resolve('jquery'), loader: 'expose?$'}
     ],
   },
 };

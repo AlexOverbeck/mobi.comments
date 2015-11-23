@@ -1,15 +1,17 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import createStore from '../stores/commentsStore';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import Todo from '../containers/Todo'
+import configureStore from '../store/configureStore'
 
-import createStore from '../stores/commentsStore';
-import Comments from '../containers/Comments';
+const store = configureStore()
 
-const App = props => {
-  const store = createStore(props);
+const TodoApp = props => {
   return (
     <Provider store={store}>
-      <Comments />
+      <Todo />
     </Provider>
   )
 }
+
+export default TodoApp

@@ -6,4 +6,4 @@
 //= require react_on_rails
 
 //= require generated/vendor-bundle
-//= require generated/app-bundle
+//= require generated/client-bundle
