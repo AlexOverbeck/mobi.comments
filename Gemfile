@@ -4,8 +4,13 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg'
 gem 'puma', '~> 3.0'
 
+gem 'slim'
+
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
+gem 'react-rails'
+gem 'flux-rails-assets'
+
 gem 'sass-rails', '~> 5.0'
 
 # Use Uglifier as compressor for JavaScript assets
