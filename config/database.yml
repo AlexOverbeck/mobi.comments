@@ -1,0 +1,12 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: mobi_comments_development
+
+test:
+  <<: *default
+  database: mobi_comments_test
