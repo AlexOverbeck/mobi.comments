@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def index
-    render component: 'Comments', props: { comments: Comment.all.reverse }
+    @comments = Comment.all.reverse
   end
 
   private
