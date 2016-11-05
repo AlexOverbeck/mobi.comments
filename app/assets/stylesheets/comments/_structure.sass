@@ -1,0 +1,30 @@
+*
+  box-sizing: border-box
+
+.comments
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  align-content: stretch
+  align-items: flex-start
+  > *
+    flex: 1 0 60%
+
+.comment-form
+  flex-grow: 1
+  flex-basis: 300px
+  margin: 5%
+
+  @media (min-width: 700px)
+    padding: 3%
+    margin: 2%
+
+.comment-list
+  padding: 5% 0
+
+@media (min-width: 1000px)
+  .comment-form
+    padding: 2%
+
+.comment-list
+  padding-top: 5%

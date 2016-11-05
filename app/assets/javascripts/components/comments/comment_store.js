@@ -40,11 +40,6 @@ var CommentStore = {
     }.bind(this));
   },
 
-  createComment: function(data, callback){
-    $.post('/comments', { comment: data });
-    callback();
-  },
-
   createSubscription: function() {
     App.cable.subscriptions.create('CommentsChannel', {
       connected: function() {
@@ -63,6 +58,11 @@ var CommentStore = {
 
   toggleSubmittable: function(canSubmit, callback) {
     this.canSubmit = canSubmit;
+    callback();
+  },
+
+  createComment: function(data, callback){
+    $.post('/comments', { comment: data });
     callback();
   },
 

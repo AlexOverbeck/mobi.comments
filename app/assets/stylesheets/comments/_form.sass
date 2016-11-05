@@ -1,0 +1,20 @@
+.comment-form
+  +the-perfect-shadow
+  background-color: white
+  border-radius: 6px
+
+  form
+    @extend %clearfix
+
+  input:not([type=submit]),
+  textarea
+    margin-bottom: 1rem
+
+  label
+    @extend %hide
+
+
+.primary
+  background-color: $accent-color
+  color: white
+  float: right

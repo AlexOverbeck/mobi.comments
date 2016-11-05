@@ -20,8 +20,8 @@ var CommentForm = React.createClass({
         <label htmlFor='author'>Name</label>
         <input id='author' placeholder='Name' name='author' onChange={this.handleChange}/>
         <label htmlFor='content'>Comment</label>
-        <textarea id='content' name='content' onChange={this.handleChange}/>
-        <button disabled={!this.props.canSubmit}>Comment</button>
+        <textarea id='content' placeholder='Comment' name='content' onChange={this.handleChange}/>
+        <button className='primary' disabled={!this.props.canSubmit}>Comment</button>
       </form>
     )
   }

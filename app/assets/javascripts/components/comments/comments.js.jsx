@@ -20,10 +20,14 @@ var Comments = React.createClass({
   render: function() {
     return (
       <div className='comments'>
-        <CommentForm canSubmit={this.state.canSubmit}/>
-        {this.state.comments.map(function(comment) {
-          return <Comment author={comment.author} content={comment.content} key={comment.id} />
-        })}
+        <section className='comment-form'>
+          <CommentForm canSubmit={this.state.canSubmit}/>
+        </section>
+        <section className='comment-list'>
+          {this.state.comments.map(function(comment) {
+            return <Comment author={comment.author} content={comment.content} key={comment.id} />
+          })}
+        </section>
       </div>
     )
   }
