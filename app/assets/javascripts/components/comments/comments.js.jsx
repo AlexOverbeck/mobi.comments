@@ -25,7 +25,14 @@ var Comments = React.createClass({
         </section>
         <section className='comment-list'>
           {this.state.comments.map(function(comment) {
-            return <Comment author={comment.author} content={comment.content} key={comment.id} />
+            return (
+              <Comment
+                author={comment.author}
+                avatar_hash={comment.avatar_hash}
+                content={comment.content}
+                created_at={comment.created_at}
+                key={comment.id} />
+            )
           })}
         </section>
       </div>

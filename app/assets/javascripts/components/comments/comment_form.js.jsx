@@ -17,6 +17,8 @@ var CommentForm = React.createClass({
   render: function() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <label htmlFor='email'>Name</label>
+        <input id='email' placeholder='Email' name='email' onChange={this.handleChange}/>
         <label htmlFor='author'>Name</label>
         <input id='author' placeholder='Name' name='author' onChange={this.handleChange}/>
         <label htmlFor='content'>Comment</label>

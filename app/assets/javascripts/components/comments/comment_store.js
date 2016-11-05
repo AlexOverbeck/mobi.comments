@@ -70,7 +70,9 @@ var CommentStore = {
     this.comments.unshift({
       id: data.id,
       author: data.author,
-      content: data.content
+      avatar_hash: data.avatar_hash,
+      content: data.content,
+      created_at: data.created_at,
     });
     callback();
   },
