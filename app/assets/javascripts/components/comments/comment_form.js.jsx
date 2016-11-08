@@ -19,6 +19,9 @@ var CommentForm = React.createClass({
       <form onSubmit={this.handleSubmit}>
         <label htmlFor='email'>Name</label>
         <input id='email' placeholder='Email' name='email' onChange={this.handleChange}/>
+        <div className='hint'>
+          <p>We don't save this.</p>
+        </div>
         <label htmlFor='author'>Name</label>
         <input id='author' placeholder='Name' name='author' onChange={this.handleChange}/>
         <label htmlFor='content'>Comment</label>

@@ -1,11 +1,32 @@
-.comment-list
-  height: 100vh
-  overflow-y: scroll
-
 .comment
+  align-items: flex-start
   border-bottom: 1px solid transparent
+  display: flex
   margin-bottom: .5rem
   padding: .5rem 5%
   transition: .3s
+
   &:hover
     border-color: $accent-color
+
+  > *
+    flex:
+      grow: 1
+      shrink: 0
+      basis: 0
+
+.avatar
+  border-radius: 50px
+  display: inline-flex
+  flex:
+    grow: 0
+    basis: 50px
+  margin-right: 2%
+  overflow: hidden
+  img
+    height: 50px
+    width: 50px
+
+.timestamp
+  text-align: right
+  font-size: .6rem

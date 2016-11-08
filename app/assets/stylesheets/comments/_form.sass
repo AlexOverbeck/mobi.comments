@@ -9,6 +9,8 @@
   input:not([type=submit]),
   textarea
     margin-bottom: 1rem
+    &:focus ~ .hint p
+      color: $accent-color
 
   label
     @extend %hide
@@ -18,3 +20,12 @@
   background-color: $accent-color
   color: white
   float: right
+
+.hint
+  margin-top: -1rem
+  text-align: right
+  p
+    color: $divider-color
+    font:
+      size: .75rem
+      style: italic

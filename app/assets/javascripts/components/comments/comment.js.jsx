@@ -21,10 +21,14 @@ var Comment = React.createClass({
   render: function() {
     return (
       <div className='comment'>
-        <img src={this.avatarUrl()}/>
-        <h1>{this.props.author}</h1>
-        <p>{this.props.content}</p>
-        <p><em>{this.formattedDate()}</em></p>
+        <div className='avatar'>
+          <img src={this.avatarUrl()}/>
+        </div>
+        <div>
+          <h1>{this.props.author}</h1>
+          <p>{this.props.content}</p>
+          <p className='timestamp'><em>{this.formattedDate()}</em></p>
+        </div>
       </div>
     )
   }

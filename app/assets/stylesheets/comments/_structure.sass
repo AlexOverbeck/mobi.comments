@@ -3,28 +3,37 @@
 
 .comments
   display: flex
-  flex-direction: row
-  flex-wrap: wrap
-  align-content: stretch
-  align-items: flex-start
+  flex:
+    direction: row
+    wrap: wrap
+  align:
+    content: stretch
+    items: flex-start
+  max-width: 1200px
+  margin-left: auto
   > *
     flex: 1 0 60%
 
 .comment-form
-  flex-grow: 1
-  flex-basis: 300px
+  flex:
+    basis: 300px
+    grow: 1
   margin: 5%
+  padding: 5%
 
   @media (min-width: 700px)
-    padding: 3%
     margin: 2%
+    padding: 3%
+
+  @media (min-width: 1000px)
+    padding: 2%
+    flex-basis: 350px
+
+  @media (min-width: 1300px)
+    flex-basis: 400px
 
 .comment-list
   padding: 5% 0
-
-@media (min-width: 1000px)
-  .comment-form
-    padding: 2%
-
-.comment-list
-  padding-top: 5%
+  @media (min-width: 834px)
+    height: 100vh
+    overflow-y: scroll
