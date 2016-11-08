@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.all.reverse
+    @comments = Comment.order('created_at DESC')
   end
 
   private
